@@ -6,7 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CreateUserController;
 use App\Http\Controllers\ProfileController;
-
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -55,7 +55,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:super-admin|ad
     
     Route::get('/dashboard', [AdminController::class,   'dashboard'])->name('admin_dashboard');
     
-
+    Route::resource('/events', EventController::class);
+    Route::get('/events/visibility/{id}', [EventController::class, 'visibility'])->name('event_visibility');
+    Route::get('/events/delete/{id}', [EventController::class, 'deleteEvent'])->name('deleteEvent');
+    
     Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
     Route::get('/profile/edit', [ProfileController::class, 'profile_edit'])->name('profile_edit');
     Route::post('/profile/update', [ProfileController::class, 'profile_update'])->name('profile_update');
