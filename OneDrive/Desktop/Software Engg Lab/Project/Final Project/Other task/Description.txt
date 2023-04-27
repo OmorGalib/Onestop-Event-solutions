@@ -1,0 +1,81 @@
+				
+                                           Features Details
+
+1. Event Planning:
+ 	It is one of an event management system's main purposes. The technology aids in streamlining the 
+	entire event planning process, from the generation of the first idea to its execution.Event planners 
+	use the system to brainstorm event ideas, create budgets, and define the scope of the event.
+
+
+	
+2. Customized Processes & Scheduling: 
+ 	An event management system should have individualized procedures and scheduling. 
+	The technology enables event organizers to design workflows and schedules that are 
+	specific to the demands and specifications of particular events. The capacity to design 
+	and automate particular tasks and workflows for various sorts of events is referred to 
+	as customized processes.
+  
+
+3. Budget Management:
+                      A key component of an event management system is budget management. 
+	Event planners can use the system to generate and manage budgets for their 
+	events, ensuring that all costs are properly monitored and handled.By using an 
+	event management system for budget management, event planners can ensure 
+	that their events are financially successful. The system provides a centralized platform 
+	for managing all financial aspects of the event, ensuring that expenses are tracked, managed, 
+	and controlled effectively. This helps event planners to stay within budget, minimize costs, and maximize profits.
+
+
+4. Marketing and Promotion:
+  	An event management system should include marketing and promotion. 
+	The system enables event organizers to design and carry out marketing campaigns 
+	to advertise their events and draw participants. Event organizers can reach a larger 
+	audience, boost attendee engagement, and ultimately increase event attendance by 
+	adopting an event management system for marketing and advertising. It is simple for 
+	event planners to develop, carry out, and evaluate marketing campaigns thanks to the 
+	system's integrated platform for handling all areas of event marketing and promotion.
+
+5. Speaker and Presenter:
+  	An essential component of an event management system is the management of speakers and presenters. 
+	The technology enables event organizers to plan, schedule, and manage speakers and presenters for their events. 
+	Event organizers may guarantee that their events have top-notch material and interesting sessions by adopting an 
+	event management system for speaker and presenter management. Event organizers may easily coordinate their 
+	activities and connect with speakers and presenters using the system's centralized platform for handling all aspects 
+	of speaker and presenter engagement.
+
+
+6. Human Resources Allocation:
+	It is an essential aspect of event management system. It involves assigning the right people with the necessary 
+	skills and expertise to different tasks and responsibilities to ensure the success of an event.The event management system helps 
+	in human resource allocation by providing a centralized platform for event organizers to manage and track the 
+	availability and skills of their staff and volunteers. The system allows organizers to create a database of staff and 
+	volunteers with their contact information, skills, and availability. This makes it easy for event organizers to select and 
+	assign the right people to specific tasks and roles.
+
+7. Registration and Ticketing :
+	One of the most important components of an event management system is registration and ticketing. 
+	Event organizers can design and manage registration procedures, ticket sales, and attendee information 
+	using the system. Event organizers can simplify the registration process, lessen administrative labor, and 
+	provide guests a seamless experience by employing an event management system for registration and ticketing. 
+	Event organizers may easily track registration rates, sell tickets, and connect with attendees thanks to the system's 
+	integrated platform for managing all registration and ticketing-related tasks.
+
+
+8. Onsite Monitoring: 
+   	An essential component of an event management system is onsite monitoring. 
+	The system enables event organizers to oversee and control numerous parts of the 
+	event on-site, ensuring that everything goes according to plan and that guests have a 
+	good time. Event organizers may make sure that guests have a good time and that the 
+	event goes successfully by implementing an event management system for on-site monitoring. 
+	The technology gives event organizers an unified platform for managing every part of the event on-site, 
+	making it simple to track attendance, manage sessions and exhibitors, interact with employees and visitors, 
+	and assess the event's success in real-time.
+
+9.Sponsor Management:
+	An essential component of an event management system is sponsor management. With the technology, 
+	event organizers can control sponsor interactions and activities, ensuring that sponsors get a good return 
+	on their investment and the event runs well. Event organizers can guarantee that sponsors get a good return 
+	on their investment and the event runs successfully by adopting an event management system for sponsor management. 
+	Event planners may easily engage with sponsors and meet sponsorship commitments thanks to the system's single platform
+	for handling all sponsor relationships and activities.
+     

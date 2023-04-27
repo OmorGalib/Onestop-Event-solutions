@@ -1,0 +1,16 @@
+		
+		****One-stop Event Portal****
+				(PROPOSED) 
+		
+
+Event Module (planning, schedule, host, cheif guest, location,Logistics, stuff module (assign module))
+		
+1. Event Planning
+2. Customized Processes & Scheduling
+3. Budget Management
+4. Speaker and Presenter (Host)
+5. Logistics
+6. Human Resources Allocation 
+7. Onsite Monitoring (Sequrity, Staff, Service, Packaging, Logistics)
+8.Sponsor Management (Sponser has many to event)
+

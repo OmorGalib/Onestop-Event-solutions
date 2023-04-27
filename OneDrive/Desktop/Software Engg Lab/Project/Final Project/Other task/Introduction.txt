@@ -1,0 +1,9 @@
+ 
+                                                   Introduction:
+ Our system is a software application designed to help plan, organize, and manage events of various types and sizes.
+ It is a comprehensive tool that assists event planners in coordinating all the aspects of an event, from scheduling to 
+logistics to marketing and communication.There are some features of our system like event planning, customized processes
+and scheduling, budget management,marketing and promotion, speaker and presenter management, logistics, human resources
+allocation, registration and ticketing, onsite monitoring,sponsor management.By using an event management system, 
+event organizers can streamline the planning process, save time and effort, reduce the risk of errors and miscommunication, 
+and ultimately, create successful events that meet the needs and expectations of attendees.
