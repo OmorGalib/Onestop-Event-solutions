@@ -111,6 +111,26 @@
                         <div id="items" class="mt-3"></div>
 
 
+                        
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label" for="basic-default-date2">Logistics</label>
+                            
+                            <div class="col-sm-3">
+                              <input type="text" class="form-control"
+                                    name="item_name[]" placeholder="Logistics Name" />
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="number" class="form-control" id="basic-default-time2"
+                                    name="item_quantity[]" placeholder="Logistics quantity" />
+                            </div>
+                            <div class="col-sm-3 my-auto">
+                                <i class="fa fa-plus-circle " aria-hidden="true" style="font-size: 25px;color:black;" onclick="ADDLOGISTICSFORM()"></i>
+                            </div>
+
+                        </div>
+                        <div id="logistics_items" class="mt-3"></div>
+
+
                         <div class="row justify-content-end">
                             <div class="col-sm-10">
                                 <button type="submit" class="btn btn-primary btn-sm">Submit</button>
@@ -136,48 +156,84 @@
 
 @section('footer_js')
     <script>
+
         var UniqueID = 1;
+        var start_item = 1;
         var form = document.getElementById('items');
-        function ADDFORM(){
-            var tagID= UniqueID;
+        var logisticsForm = document.getElementById('logistics_items');
+        
 
-            form.innerHTML+=
-
+        function ADDLOGISTICSFORM()
+        {
+            var tagID= start_item;
+            console.log(tagID);
+            var newDiv = document.createElement('div');
+            newDiv.setAttribute('class', 'row mb-3');
+            newDiv.setAttribute('id', 'uni-' + tagID);
+            newDiv.innerHTML+=
             '<div class="row mb-3" id="uni-'+tagID+'">'+
-                '<label class="col-sm-2 col-form-label" for="basic-default-date2"></label>'+
-                '<div class="col-sm-1">'+
-                    '<div class="d-flex justify-content-center my-auto">'+
-                       ' <label for="primary_mandatory'+tagID+'" style="font-size: 0.85em;">Mandatory </label>&nbsp;&nbsp;'+
-                    '<input type="hidden" name="mandatory[]" value="0"><input type="checkbox" onclick="this.previousSibling.value=1-this.previousSibling.value">'+
-                    '</div>'+
-                '</div>'+
-
-                '<div class="col-sm-4">'+
-                    '<input type="text" class="form-control"name="reg_purpose[]" placeholder="Registration Purpose" required />'+
+                '<label class="col-sm-3 col-form-label" for="basic-default-date2"></label>'+
+                '<div class="col-sm-3">'+
+                    '<input type="text" class="form-control" name="item_name[]" placeholder="Logistics Name" required />'+
                 '</div>'+
                 '<div class="col-sm-3">'+
-                    '<input type="number" class="form-control" id="basic-default-time2" name="reg_fee[]" placeholder="Registration Fee" required />'+
+                    '<input type="number" class="form-control" id="basic-default-time2"  name="item_quantity[]" placeholder="Logistics quantity" required />'+
                 '</div>'+
-                '<div class="col-sm-1 my-auto">'+
-                    '<i class="fa fa-trash " aria-hidden="true" style="font-size: 25px;color:red;" onclick="REMOVEFORM('+tagID+')"></i>'+
-               '</div>'+
-            '<br>';
+                '<div class="col-sm-3 my-auto">'+
+                    '<i class="fa fa-trash " aria-hidden="true" style="font-size: 25px;color:red;" onclick="REMOVELOGISTICSFORM('+tagID+')"></i>'+
+            '</div>'+
+            '</div>';
+
+            logisticsForm.appendChild(newDiv);
+
+            start_item++;
+        }
+
+
+        function ADDFORM() {
+            var tagID = UniqueID;
+            var newDiv = document.createElement('div');
+            newDiv.setAttribute('class', 'row mb-3');
+            newDiv.setAttribute('id', 'uni-' + tagID);
+
+            newDiv.innerHTML =
+                '<label class="col-sm-2 col-form-label" for="basic-default-date2"></label>' +
+                '<div class="col-sm-1">' +
+                '<div class="d-flex justify-content-center my-auto">' +
+                '<label for="primary_mandatory' + tagID + '" style="font-size: 0.85em;">Mandatory </label>&nbsp;&nbsp;' +
+                '<input type="hidden" name="mandatory[]" value="0"><input type="checkbox" onclick="this.previousSibling.value=1-this.previousSibling.value">' +
+                '</div>' +
+                '</div>' +
+                '<div class="col-sm-4">' +
+                '<input type="text" class="form-control" name="reg_purpose[]" placeholder="Registration Purpose" required />' +
+                '</div>' +
+                '<div class="col-sm-3">' +
+                '<input type="number" class="form-control" id="basic-default-time2" name="reg_fee[]" placeholder="Registration Fee" required />' +
+                '</div>' +
+                '<div class="col-sm-1 my-auto">' +
+                '<i class="fa fa-trash " aria-hidden="true" style="font-size: 25px;color:red;" onclick="REMOVEFORM(' + tagID + ')"></i>' +
+                '</div>' +
+                '<br>';
+
+            form.appendChild(newDiv);
             UniqueID++;
         }
 
-        function REMOVEFORM(id)
+        function REMOVEFORM(id) {
+            var div = document.getElementById('uni-' + id).remove();
+        }
+
+        let fee_mandatory = [];
+        function REMOVELOGISTICSFORM(id)
         {
             var div = document.getElementById('uni-'+id).remove();
         }
-        let fee_mandatory = [];
-
-        function Mandatory(id)
-        {
+        function Mandatory(id) {
             var div = document.getElementById(id);
             fee_mandatory.push(div);
-            console.log(fee_mandatory+'<br>');
-
+            console.log(fee_mandatory + '<br>');
         }
+
 
     </script>
     <script>

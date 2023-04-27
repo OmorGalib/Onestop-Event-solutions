@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Logistics;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,10 +17,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        // return
-        // Carbon::now()->timestamp;
-        // $events = date("Y-m-d | H:i a", Event::get()[0]->date);
         $events =  Event::query()
+        ->with('logistics')
         ->withCount('participants')
         ->orderBy('id','DESC')
         ->paginate();
@@ -68,11 +67,20 @@ class EventController extends Controller
             'created_by'     => Auth::user()->id,
         ]);
 
-        // return[
-        //     'event' =>  $event,
-        //     'message' => 'successfully stored',
-        //     'success' => true,
-        // ];
+        if(!empty($request->item_name)){
+
+            foreach($request->item_name as $key => $item)
+            {
+                $logistics = new Logistics();
+                $logistics->event_id = $event->id;
+                $logistics->item = $item;
+                $logistics->quantity = $request->item_quantity[$key];
+                $logistics->save();
+            }
+
+        }
+
+   
 
         return back()->with('success', 'Event has been Created Successfully!');
     }
@@ -97,6 +105,7 @@ class EventController extends Controller
     public function edit(Event $event)
     {
 
+        $event->load('logistics');
         $mandatory = [];
         $reg_purpose = [];
         $reg_fee = [];
@@ -123,6 +132,8 @@ class EventController extends Controller
             'reg_purpose' => $reg_purpose,
             'reg_fee' => $reg_fee,
             'mandatory' => $mandatory,
+            'Haslogistics' => $event->logistics->count() > 0 ? true : false,
+            'Eventlogistics' => $event->logistics
         ];
 
         return view('adminpanel.event.edit',compact('event_data'));
@@ -138,13 +149,6 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        // return 'tourch';
-        // return [$request->all(), $event];
-        // return $event;
-        // $event->update($this->validation($request, $event->id) + [
-        //     'created_by'     => Auth::user()->id,
-        // ]);
-
         $fee = [];
         if(isset($request->reg_purpose)){
 
@@ -169,6 +173,19 @@ class EventController extends Controller
         ]);
 
 
+        if(!empty($request->item_name))
+        {
+
+            Logistics::where('event_id', $event->id)->delete();
+            foreach($request->item_name as $key => $item)
+            {
+                $logistics = new Logistics();
+                $logistics->event_id = $event->id;
+                $logistics->item = $item;
+                $logistics->quantity = $request->item_quantity[$key];
+                $logistics->save();
+            }
+        }
 
         return back()->with('success', 'Event has been Created Successfully!');
 
@@ -222,12 +239,5 @@ class EventController extends Controller
         }
         $event->save();
         return back()->with('success', 'Event has been Activated Successfully!');
-    }
-
-    public function deleteEvent($id)
-    {
-        $event = Event::find($id);
-        $event->delete();
-        return back()->with('success', 'Event has been Deleted Successfully!');
     }
 }

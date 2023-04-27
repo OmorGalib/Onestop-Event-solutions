@@ -48,8 +48,9 @@
                         <th>Event Date </th>
                         <th>Last date</th>
                         <th>Fee</th>
+                        <th>Logistics</th>
                         <th>status</th>
-                        <th>Participants</th>
+                        <th>patricipants</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -59,27 +60,37 @@
                         <td>{{ $key + 1 }}</td>
                         <td> <strong>{{ $item->name }}</strong></td>
 
+
+                        {{-- //<td>{{ date("d M, Y | H:i a", $item->date) }} </td>
+                        //<td>{{ date('d M, Y | H:i a', $item->reg_last_date) }} </td> --}}
+
+
                         <td>
                             <span>&nbsp;&nbsp;{{ date("h:i a", $item->date) }}</span> <br>
                             <span>{{ date("d M, Y", $item->date) }}</span>
+                            {{--  {{ date("d M, Y | H:i a", $item->date) }} --}}
                         </td>
                         <td>
                             <span>&nbsp;&nbsp;{{ date("h:i a", $item->reg_last_date) }}</span> <br>
                             <span>{{ date("d M, Y", $item->reg_last_date) }}</span>
+                            {{--  {{ date('d M, Y | H:i a', $item->reg_last_date) }} --}}
                         </td>
-
+                      
                         <td>
                             @if (!$item->fee)
-                            <span class="badge bg-label-success" style="font-size: 0.85em">Free Registration</span>
+                                <span class="badge bg-label-success" style="font-size: 0.85em">Free Registration</span>
                             @else
-                            @foreach ($item->fee as $key=>$data)
-                            <span class="badge bg-label-primary me-1">{{ $key }}</span> : &nbsp; {{ abs($data ) }}/-
-                            @if (((int)($data))<0) &nbsp;<span class="badge rounded-pill bg-warning "
-                                style="font-size: 0.65em">Mandatory</span>
-                                @endif <br>
+                                @foreach ($item->fee as $key=>$data)
+                                    <span class="badge bg-label-primary me-1">{{ $key }}</span> : &nbsp; {{ abs($data ) }}/-
+                                    @if (((int)($data))<0) &nbsp;<span class="badge rounded-pill bg-warning "
+                                        style="font-size: 0.65em">Mandatory</span>
+                                    @endif <br>
+                                
                                 @endforeach
-
-                                @endif
+                            @endif
+                        </td>
+                        <td>
+                            {{ $item->logistics->count() > 0 ? 'yes': 'no' }}
                         </td>
                         <td>
                             @if ($item->is_visible)
@@ -93,13 +104,12 @@
                             @endif
                         </td>
 
-                       <td>
+                        <td>
 
-                            <a href="#">
-                                <span>0</span> &nbsp; <i class="fa fa-users"
+                            <a href="{{ url('admin/participants?event_id='.$item->id) }}">
+                                <span>{{ $item->participants_count ?? 0 }}</span> &nbsp; <i class="fa fa-users"
                                     aria-hidden="true"></i> </a>
                         </td>
-
 
                         <td>
                             <div class="dropdown">
@@ -110,11 +120,11 @@
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="{{ route('events.edit', $item->id) }}"><i
                                             class="bx bx-edit-alt me-1"></i> Edit</a>
-                                    
-                                    
-                                    <a class="dropdown-item" href="{{route('deleteEvent', $item->id)}}" onclick="return confirm('Are you sure you would like to delete this event?');"><i class="bx bx-trash me-1"></i>
+                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
                                         Delete</a>
-                                   
+                                    <a class="dropdown-item"
+                                        onclick="CopyEventURL('{{ $item->id }}', '{{ $item->name }}')"
+                                        style="cursor: pointer;"><i class="fa fa-clipboard me-1"></i> Get Link</a>
                                 </div>
                             </div>
                         </td>

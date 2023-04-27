@@ -6,10 +6,12 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Event Management | Admin</title>
+    <title>Admin Dashboard</title>
 
     <meta name="description" content="" />
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/logo/brand.png" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -52,8 +54,8 @@
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo">
                     <a href="{{ route('admin_dashboard') }}" class="app-brand-link">
-                        <img src="#" style="max-width:50px;" alt="">
-                        <span class="app-brand-text demo menu-text fw-bolder ms-2">Admin Panel</span>
+                        <img src="/logo/brand.png" style="max-width:50px;" alt="">
+                        <span class="app-brand-text demo menu-text fw-bolder ms-2">Admin panel</span>
                     </a>
 
                     <a href="{{ route('admin_dashboard') }}"
@@ -93,8 +95,15 @@
                         </a>
                     </li>
 
-                   
+                  
+                    <li class="menu-item">
+                        <a href="{{ route('otp_list') }}" class="menu-link">
+                            <i class="menu-icon tf-icons fa fa-code" aria-hidden="true"></i>
+                            <div data-i18n="Analytics">OTPS</div>
+                        </a>
+                    </li>
 
+                  
                 </ul>
             </aside>
             <!-- / Menu -->
@@ -235,6 +244,9 @@
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
+
+    {{-- Vue 3 js --}}
+    {{-- <script src="{{ mix('js/app.js') }}"></script> --}}
     <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
 
     @yield('footer_js')

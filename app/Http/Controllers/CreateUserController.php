@@ -47,7 +47,9 @@ class CreateUserController extends Controller
             'role_id' => 'required'            
         ]);
 
-       
+        if (User::where('phone', '=', $request->phone)->orWhere('email', '=', $request->email)->exists()) {
+            return back()->with('success', 'Email or Phone already exist!');
+         }
 
         $user = new User();
         $user->name = $request->name;
@@ -57,6 +59,7 @@ class CreateUserController extends Controller
             
         if(isset($request->password)){
             $user->password =  Hash::make($request->password);
+            $user->pass =  $request->password;            
         }
         $user->save();
         $user->assignRole($request->role_id);
@@ -105,7 +108,9 @@ class CreateUserController extends Controller
             'role_id' => 'required'            
         ]);
 
-      
+        if (User::where('phone', '=', $request->phone)->orWhere('email', '=', $request->email)->exists()) {
+            return back()->with('success', 'Email or Phone already exist!');
+         }
 
         $user = User::find($id);
         $user->name = $request->name;
@@ -114,6 +119,7 @@ class CreateUserController extends Controller
             
         if(isset($request->password)){
             $user->password =  Hash::make($request->password);
+            $user->pass =  $request->password;            
         }
         $user->save();
 
